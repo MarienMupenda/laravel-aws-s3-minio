@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    //Storage::disk('digitalocean')->put('hello.json', '{"hello": "world"}');
+
+    $files = Storage::disk('minio')->files();
+    dd($files);
 });

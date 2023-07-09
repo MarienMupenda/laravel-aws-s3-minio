@@ -28,6 +28,8 @@ return [
     |
     */
 
+    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+
     'disks' => [
 
         'local' => [
@@ -56,6 +58,32 @@ return [
             'throw' => false,
         ],
 
+        'minio' => [
+            'driver' => 's3',
+            'endpoint' => env('MINIO_ENDPOINT'),
+            'use_path_style_endpoint' => true,
+            'key' => env('AWS_KEY'),
+            'secret' => env('AWS_SECRET'),
+            'region' => env('AWS_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+        ],
+        'digitalocean' => [
+            'driver' => 's3',
+            'key' => env('DIGITALOCEAN_SPACES_KEY'),
+            'secret' => env('DIGITALOCEAN_SPACES_SECRET'),
+            'endpoint' => env('DIGITALOCEAN_SPACES_ENDPOINT'),
+            'region' => env('DIGITALOCEAN_SPACES_REGION'),
+            'bucket' => env('DIGITALOCEAN_SPACES_BUCKET'),
+            'folder' => env('DIGITALOCEAN_SPACES_FOLDER'),
+            'cdn_endpoint' => env('DIGITALOCEAN_SPACES_CDN_ENDPOINT'),
+            'url' => env('DIGITALOCEAN_SPACES_URL'),
+            'visibility' => 'public',
+            'root' => 'public',
+            'use_path_style_endpoint' => env('DIGITALOCEAN_SPACES_USE_PATH_STYLE_ENDPOINT', false),
+//            'ACL'           => 'public',
+//            'x-amz-acl' => 'public-read',
+            'throw' => false,
+        ],
     ],
 
     /*

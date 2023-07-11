@@ -19,5 +19,6 @@ Route::get('/', function () {
     //Storage::disk('digitalocean')->put('hello.json', '{"hello": "world"}');
 
     $files = Storage::disk('minio')->files();
-    dd($files);
+    $files2 = Storage::disk('digitalocean')->files();
+    dd($files, $files2);
 });
